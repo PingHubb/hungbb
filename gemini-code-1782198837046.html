@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unicorn Magical Diary ✦ Tokyo Honeymoon Itinerary</title>
+    
+    <!-- Google Fonts: Playful, Cute & Hand-drawn fonts for headings, body text, and Chinese characters -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Quicksand:wght@400;500;600;700&family=ZCOOL+KuaiLe&family=Kosugi+Maru&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        :root {
+            /* Palette extracted directly from the unicorn stickers */
+            --unicorn-pink: #FFB7D5;
+            --soft-rose: #FF9ECA;
+            --magic-magenta: #FF6FA9;
+            --lavender-purple: #D6C7FF;
+            --glowing-purple: #B59EFF;
+            --cloud-blue: #BCE7FD;
+            --star-yellow: #FFF3A7;
+            --mint-green: #C4FAF8;
+            
+            /* Theme Color Foundations */
+            --text-dark: #5C4B61;
+            --text-muted: #8E7A94;
+            --white-sticker: #FFFFFF;
+            --border-soft: #FFE3F0;
+            
+            /* Action States & Alerts */
+            --warm-alert: #FF9B9B;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            /* Applied 'ZCOOL KuaiLe' and 'Kosugi Maru' for a bubbly, rounded cute Chinese font style */
+            font-family: 'Quicksand', 'ZCOOL KuaiLe', 'Kosugi Maru', sans-serif;
+            /* Magical Pastel Gradient Blend mimicking sky and rainbows */
+            background: linear-gradient(135deg, #FFF0F6 0%, #EBF7FF 40%, #F3EFFF 75%, #FFF9E6 100%);
+            background-attachment: fixed;
+            color: var(--text-dark);
+            line-height: 1.7;
+            padding-bottom: 80px;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Ambient Magical Background Lighting Effects */
+        body::before {
+            content: '✨';
+            position: fixed;
+            top: 10%;
+            left: 8%;
+            font-size: 3rem;
+            opacity: 0.4;
+            z-index: -1;
+            animation: floating 4s ease-in-out infinite;
+        }
+
+        body::after {
+            content: '☁️';
+            position: fixed;
+            bottom: 15%;
+            right: 8%;
+            font-size: 4rem;
+            opacity: 0.3;
+            z-index: -1;
+            animation: floating 5s ease-in-out infinite alternate;
+        }
+
+        @keyframes floating {
+            0% { transform: translateY(0px) rotate(0deg); }
+            100% { transform: translateY(-15px) rotate(10deg); }
+        }
+
+        /* Whimsical Dreamy Header */
+        header {
+            text-align: center;
+            padding: 70px 20px 30px 20px;
+            position: relative;
+        }
+
+        header h1 {
+            font-family: 'Caveat', 'ZCOOL KuaiLe', cursive;
+            font-size: 5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, var(--magic-magenta), var(--glowing-purple), #FF9800);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0px 4px 6px rgba(255, 183, 213, 0.4));
+            margin-bottom: 5px;
+            display: inline-block;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            letter-spacing: 3px;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        /* Scannable Layout Container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Bubbly Ribbon Navigation */
+        .day-navigation {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 40px;
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.85);
+            padding: 15px 10px;
+            z-index: 100;
+            border-bottom: 3px dashed var(--unicorn-pink);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 0 0 30px 30px;
+            box-shadow: 0 8px 24px rgba(255, 183, 213, 0.15);
+        }
+
+        .day-btn {
+            font-family: 'Quicksand', 'ZCOOL KuaiLe', sans-serif;
+            background: var(--white-sticker);
+            border: 2px solid var(--border-soft);
+            padding: 8px 18px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.03);
+        }
+
+        .day-btn:hover {
+            color: var(--magic-magenta);
+            border-color: var(--unicorn-pink);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(255, 111, 169, 0.2);
+        }
+
+        .day-btn.active {
+            background: linear-gradient(135deg, var(--unicorn-pink) 0%, var(--lavender-purple) 100%);
+            color: white;
+            border-color: white;
+            box-shadow: 0 6px 15px rgba(214, 199, 255, 0.6);
+            transform: scale(1.05);
+        }
+
+        /* Timeline Grid */
+        .timeline {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+
+        /* Bubbly Sticker Card Design */
+        .card {
+            background: var(--white-sticker);
+            border: 3px solid #FFEBF4;
+            border-radius: 24px;
+            padding: 26px;
+            display: grid;
+            grid-template-columns: 140px 1fr auto;
+            align-items: start;
+            gap: 24px;
+            box-shadow: 0 8px 20px rgba(92, 75, 97, 0.05);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-5px) scale(1.01);
+            border-color: var(--unicorn-pink);
+            box-shadow: 0 15px 30px rgba(255, 183, 213, 0.35);
+        }
+
+        /* Left Column Block: Time Framework */
+        .card-time-block {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .time-badge {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .type-tag {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 12px;
+            text-transform: uppercase;
+            text-align: center;
+            width: fit-content;
+            letter-spacing: 0.5px;
+        }
+
+        /* Sticker Aura Theme Custom Colors */
+        .tag-overview { background: var(--star-yellow); color: #7A6500; border: 1px solid rgba(0,0,0,0.05); }
+        .tag-transport { background: var(--cloud-blue); color: #2B6180; }
+        .tag-meal { background: #FFEAA7; color: #8A6D00; }
+        .tag-booking { background: #FFD3E8; color: #A8386B; }
+        .tag-shopping { background: #E3D8FF; color: #5B43A8; }
+        .tag-activity { background: var(--mint-green); color: #237A65; }
+        .tag-checkin { background: #D2F7F6; color: #1E706E; }
+
+        /* Center Column Block */
+        .card-content {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .card-header-line {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .location-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.8rem;
+            background: #F4F0F6;
+            padding: 3px 10px;
+            border-radius: 8px;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .category-badge {
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--star-yellow), var(--mint-green));
+            color: #4A6E56;
+            padding: 2px 8px;
+            border-radius: 6px;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .card-desc {
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            white-space: pre-line;
+        }
+
+        /* Weather Badge Layout styling */
+        .weather-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #7A6500;
+            background: #FFFCEB;
+            border: 2px solid var(--star-yellow);
+            padding: 4px 14px;
+            border-radius: 15px;
+            width: fit-content;
+            margin-bottom: 8px;
+        }
+
+        /* Cute Scrapbook Note Blocks */
+        .card-notes {
+            font-size: 0.88rem;
+            background: #FFF5F9;
+            border-left: 4px solid var(--soft-rose);
+            padding: 12px 16px;
+            border-radius: 4px 16px 16px 4px;
+            color: #8C4869;
+            margin-top: 6px;
+            white-space: pre-line;
+        }
+
+        .note-warning {
+            border-left-color: var(--warm-alert) !important;
+            background: #FFF2F2 !important;
+            color: #A34747 !important;
+        }
+
+        .note-star {
+            border-left-color: #F3CD57 !important;
+            background: #FFFDF0 !important;
+            color: #7A621D !important;
+        }
+
+        /* Magical Booked Ribbon Design */
+        .booked-ribbon {
+            position: absolute;
+            top: 15px;
+            right: 75px;
+            background: linear-gradient(135deg, var(--magic-magenta), var(--soft-rose));
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 10px rgba(255, 111, 169, 0.3);
+            animation: pulseGlow 2.5s infinite ease-in-out;
+        }
+
+        @keyframes pulseGlow {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); box-shadow: 0 6px 14px rgba(255, 111, 169, 0.5); }
+            100% { transform: scale(1); }
+        }
+
+        /* Right Column Block: Interactive Map Action Buttons */
+        .card-actions {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        .map-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            background: #FFF5F9;
+            border: 2px solid var(--border-soft);
+            border-radius: 50%;
+            color: var(--magic-magenta);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-decoration: none;
+        }
+
+        .map-btn:hover {
+            background: linear-gradient(135deg, var(--unicorn-pink) 0%, var(--lavender-purple) 100%);
+            color: white;
+            border-color: white;
+            transform: scale(1.15) rotate(15deg);
+            box-shadow: 0 6px 12px rgba(214, 199, 255, 0.6);
+        }
+
+        /* Special Scrapbook Overview Card Display Configuration */
+        .card.mode-overview {
+            background: linear-gradient(135deg, #FFFFFF 0%, #FFF5FA 100%);
+            border: 3px dashed var(--unicorn-pink);
+            grid-template-columns: 1fr;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .card.mode-overview .card-time-block {
+            align-items: center;
+        }
+
+        .card.mode-overview .card-header-line {
+            justify-content: center;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .card.mode-overview .card-title {
+            font-size: 2.2rem;
+            font-family: 'Caveat', 'ZCOOL KuaiLe', cursive;
+            letter-spacing: 1px;
+            background: linear-gradient(to right, var(--magic-magenta), var(--glowing-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-top: 5px;
+        }
+
+        .card.mode-overview .card-desc {
+            font-size: 1.05rem;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        /* Responsive Optimization Rules Matrix */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 3.8rem;
+            }
+            .card {
+                grid-template-columns: 1fr;
+                gap: 15px;
+                padding: 20px;
+            }
+            .booked-ribbon {
+                position: relative;
+                top: 0;
+                right: 0;
+                width: fit-content;
+                margin-bottom: 5px;
+            }
+            .card-actions {
+                justify-content: flex-end;
+                border-top: 2px dashed var(--border-soft);
+                padding-top: 15px;
+            }
+            .day-navigation {
+                border-radius: 0;
+                padding: 10px 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Our Magical Diary</h1>
+        <p>🦄 Tokyo Honeymoon ✦ Unicorn Itinerary 🦄</p>
+    </header>
+
+    <div class="container">
+        <!-- Floating Pill Navigation Links -->
+        <div class="day-navigation">
+            <button class="day-btn active" onclick="filterDay('all')">Show All Trails</button>
+            <button class="day-btn" onclick="filterDay('Day 1')">Day 1 (6/27)</button>
+            <button class="day-btn" onclick="filterDay('Day 2')">Day 2 (6/28)</button>
+            <button class="day-btn" onclick="filterDay('Day 3')">Day 3 (6/29)</button>
+            <button class="day-btn" onclick="filterDay('Day 4')">Day 4 (6/30)</button>
+            <button class="day-btn" onclick="filterDay('Day 5')">Day 5 (7/01)</button>
+            <button class="day-btn" onclick="filterDay('Day 6')">Day 6 (7/02)</button>
+            <button class="day-btn" onclick="filterDay('Day 7')">Day 7 (7/03)</button>
+            <button class="day-btn" onclick="filterDay('Day 8')">Day 8 (7/04)</button>
+        </div>
+
+        <!-- Master Timeline Data Grid -->
+        <div class="timeline" id="timeline-grid">
+            <!-- Structural elements render dynamically here -->
+        </div>
+    </div>
+
+    <script>
+        // Itinerary Dataset stays complete and matches user expectations perfectly
+        const itineraryData = [
+            // Day 1
+            { day: "Day 1", date: "27/06 (Sat)", time: "當日總覽", type: "Overview", title: "Arrival in Tokyo & Akasaka Walk", weather: "☀️ 27/06 (Sat) | 28°C | Sunny", location: "", category: "", desc: "抵達東京 & 赤坂漫步", notes: "", query: "抵達東京 & 赤坂漫步 Tokyo" },
+            { day: "Day 1", date: "27/06 (Sat)", time: "15:20", type: "Transport", title: "Flight Landing at Narita Airport", location: "NRT", category: "", desc: "航班降落成田機場 (NRT)", notes: "", query: "成田機場" },
+            { day: "Day 1", date: "27/06 (Sat)", time: "16:00", type: "Transport", title: "Keisei Skyliner Express", location: "", category: "", desc: "交通過渡：搭乘 京成電鐵 Skyliner ➔ 日暮里站 🔄 轉乘地鐵抵達赤坂區域 [Total: ~65m]", notes: "", query: "日暮里駅" },
+            { day: "Day 1", date: "27/06 (Sat)", time: "18:30", type: "Check-in", title: "Hotel Check-in at Best Western Akasaka", location: "赤坂", category: "", desc: "辦理入住 Best Western Hotel Fino Tokyo Akasaka", notes: "", query: "Best Western Hotel Fino Tokyo Akasaka" },
+            { day: "Day 1", date: "27/06 (Sat)", time: "19:30", type: "Meal", title: "Local Dinner in Akasaka", location: "赤坂", category: "", desc: "可選擇在地高質感餐廳：\n1. 麵處 友 (極濃雞白湯拉麵)\n2. とんかつ 水野 (老字號炸豬排)", notes: "⚠️ 提醒：Alvin不吃生海鮮/刺身，選熟食炸物、拉麵安全又美味！", query: "麵處 友 赤坂" },
+            
+            // Day 2
+            { day: "Day 2", date: "28/06 (Sun)", time: "當日總覽", type: "Overview", title: "Gaienmae Textiles & HP Studio Tour", weather: "☁️ 28/06 (Sun) | 24°C | Partly Cloudy", location: "", category: "", desc: "外苑前織物 + 豐島園哈利波特影城夢幻探索", notes: "", query: "外苑前 Tokyo" },
+            { day: "Day 2", date: "28/06 (Sun)", time: "早餐", type: "Meal", title: "Morning Tea at neel Cafe", location: "神宮前", category: "Cat 4", desc: "品嚐超人氣法式可麗餅、炸豬排三明治與現煮咖啡。吃完後搭車前往外苑前，動線極順。", notes: "★ 提早出發至原宿優雅咖啡廳享受早茶時光！\n【營業時間：10:00 - 20:00】", query: "neel 古着屋 カフェ 神宮前" },
+            { day: "Day 2", date: "28/06 (Sun)", time: "11:00", type: "Activity", title: "Knittingbird Studio Visit", location: "外苑前", category: "Cat 1", desc: "頂級獨立織物工作室！完全預約制，一對一參觀。", notes: "⚠️ 修正：配合店家11點開門，早上先去 neel。因常態週日不開，請務必提前聯繫確認蜜月特殊預約時段。\n【常態營業：週三至週六 11:00 - 17:00】", query: "Knittingbird 外苑前" },
+            { day: "Day 2", date: "28/06 (Sun)", time: "11:15", type: "Transport", title: "Metro Transit to Toshimaen", location: "", category: "", desc: "交通轉乘：外苑前站 ➔ 青山一丁目 🔄 轉地鐵大江戶線直達「豐島園站」", notes: "", query: "豐島園駅" },
+            { day: "Day 2", date: "28/06 (Sun)", time: "13:30", type: "Booking", title: "Warner Bros. Studio Tour Tokyo", location: "練馬區", category: "Cat 2", desc: "正式入場魔法世界！1:1斜角巷、大禮堂、霍格華茲特快車，中間在影城內品嚐招牌奶油啤酒與主題輕食。[體驗時間約 4.5h]", notes: "★ 已預約入場！*(需提早數月線上搶票)*", query: "ワーナー ブラザース スタジオツアー東京" },
+            { day: "Day 2", date: "28/06 (Sun)", time: "18:30", type: "Transport", title: "Return to Hotel & Refresh", location: "赤坂", category: "", desc: "交通返回赤坂酒店稍作休息整理，卸下輕便裝備。", notes: "", query: "Best Western Hotel Fino Tokyo Akasaka" },
+            { day: "Day 2", date: "28/06 (Sun)", time: "19:30", type: "Booking", title: "Dinner at Mitsubachi Izakaya", location: "代代木", category: "Cat 2", desc: "Yasai Makigushi Nikusashi Mitsubachi (蔬菜卷串 肉刺身 Mitsubachi)\n地址：東京都渋谷区千駄ヶ谷5-20-22", notes: "★ Booked 19:30 | 請依時抵達代代木車站周邊。", query: "Yasai Makigushi Nikusashi Mitsubachi" },
+            { day: "Day 2", date: "28/06 (Sun)", time: "21:00", type: "Shopping", title: "Late Night Shopping at Donki & Daiso", location: "澀谷/新宿", category: "", desc: "大逛驚安殿堂與生活百貨，採購限定零食與日常藥妝雜貨。", notes: "", query: "MEGA Don Quijote Shibuya" },
+            
+            // Day 3
+            { day: "Day 3", date: "29/06 (Mon)", time: "當日總覽", type: "Overview", title: "Asakusa Culture & Akihabara Anime Hub", weather: "☀️ 29/06 (Mon) | 29°C | Sunny", location: "", category: "", desc: "下町風情與動漫電玩文化的完美穿梭一日遊", notes: "", query: "淺草雷門" },
+            { day: "Day 3", date: "29/06 (Mon)", time: "早餐", type: "Meal", title: "Asakusa Walk & Dengama Tableware", location: "西淺草", category: "Cat 4", desc: "淺草早晨散策！先在雷門及仲見世通漫步，10:00準時到田窯選購傳統精緻日式陶瓷器皿與和風餐具。", notes: "*(早餐可於雷門附近小吃或咖啡廳簡單解決)*\n【營業時間：10:00 - 19:00】", query: "和の器 田窯 西浅草" },
+            { day: "Day 3", date: "29/06 (Mon)", time: "10:00", type: "Activity", title: "Teatime at Hatoya Asakusa", location: "淺草", category: "Cat 1", desc: "極致現刷焙茶/抹茶專門店！可在吧台前欣賞茶師現刷優雅焙茶。", notes: "⚠️ 動線修正：已移至11:00開門時間，完全避開吃閉門羹風險。\n【營業時間：11:00 - 18:00】", query: "Hatoya Asakusa 浅草" },
+            { day: "Day 3", date: "29/06 (Mon)", time: "11:00", type: "Activity", title: "Textile Exploration at Orinami Asakusa", location: "淺草", category: "Cat 3", desc: "傳統日式紡織與手作工藝體驗，尋找特色布料與精緻和風編織配件。[預留 45m]", notes: "【營業時間：10:00 - 18:00】", query: "Orinami 浅草店" },
+            { day: "Day 3", date: "29/06 (Mon)", time: "12:30", type: "Meal", title: "Artisan Ramen at Mototen Kuroki", location: "淺慢橋", category: "Cat 3", desc: "日本頂級匠人高評價拉麵，湯頭極致細膩。[用餐時間約 1h]", notes: "⚠️ 備註：當天 8:00 開始發放當日整理券，只收現金。Alvin請選用純鴨/鹽味拉麵，避開貝類食材！\n【營業時間：11:00 - 15:00 (週日公休)】", query: "饗 くろ喜" },
+            { day: "Day 3", date: "29/06 (Mon)", time: "13:30", type: "Activity", title: "Yarn Hunting at ITORICOT Asakusabashi", location: "淺草橋", category: "Cat 1", desc: "工廠剩餘優質工業線、絕版毛線深度尋寶，手作愛好者必訪天堂。[預留 1h]", notes: "⚠️ 修正：因同區的 Keito 實體店已永久歇業，可將時間留給 ITORICOT 深度體驗！\n【營業時間：11:00 - 18:00，不定休】", query: "ITORICOT 浅草橋" },
+            { day: "Day 3", date: "29/06 (Mon)", time: "15:20", type: "Activity", title: "Akihabara Otaku Culture Pilgrimage", location: "秋葉原", category: "Cat 4", desc: "依個人步調自由逛街朝盛：\n- Radio Kaikan 廣播會館 (2-7F amiami, Habikoro)\n- TAMASHII NATIONS STORE (頂級成品模型)\n- Super Potato (懷舊老遊戲街機)\n- Mandarake CoCoo (絕版老玩具)\n- 駿河屋 Surugaya / animate 旗艦店", notes: "各大店鋪營業時間多為 10:00/11:00 - 20:00。放鬆步調狂熱血拼！", query: "秋葉原ラジオ会館" },
+            { day: "Day 3", date: "29/06 (Mon)", time: "19:30", type: "Booking", title: "Monster Hunter Bar Gathering", location: "秋葉原", category: "Cat 2", desc: "官方授權獵人集會所！沉浸式遊戲場景還原，必點特色貓飯與夢幻獵人調酒調飲。", notes: "★ 已成功預約！點餐請特別注意：請主動避開生刺身、蛤蜊與生蠔，確保全熟食安全！", query: "Monster Hunter Bar 秋葉原" },
+            
+            // Day 4
+            { day: "Day 4", date: "30/06 (Tue)", time: "當日總覽", type: "Overview", title: "Ginza Aesthetics & Tokyo Station Character Street", weather: "🌦️ 30/06 (Tue) | 26°C | Light Showers", location: "", category: "", desc: "高級美學雜貨與高空夜景極致壽喜燒的奢華交織", notes: "", query: "銀座中央通" },
+            { day: "Day 4", date: "30/06 (Tue)", time: "早餐", type: "Meal", title: "Breakfast at Senriken Tsukiji", location: "築地", category: "", desc: "享用經典熱奶油燉菜與昭和風風情鬆餅。專注享用香濃熟食，完美避開築地生海鮮市場市場人群。", notes: "【營業時間：04:00 - 12:30，週日及休市日休】", query: "センリ軒 築地" },
+            { day: "Day 4", date: "30/06 (Tue)", time: "10:00", type: "Activity", title: "Ginza Chuo-dori Morning Stroll", location: "銀座", category: "", desc: "慢步走向 Cloud Club，享受早晨優雅、少人且寬敞舒適的銀座街道與精緻櫥窗購物。", notes: "", query: "銀座中央通り" },
+            { day: "Day 4", date: "30/06 (Tue)", time: "10:30", type: "Shopping", title: "Ginza Loft & MUJI Flagship Store", location: "銀座", category: "Cat 1", desc: "現刷焙茶飲用僅需15m，喝完立刻前往 Ginza Loft 與 MUJI Ginza 全球旗艦店，大逛生活美學雜貨！", notes: "⚠️ 時間微調：配合店家11:00營業時間卡位。\n【營業時間：11:00 - 20:00】", query: "Ginza Loft" },
+            { day: "Day 4", date: "30/06 (Tue)", time: "11:00", type: "Activity", title: "Hanayama Udon Queue Booking", location: "銀座", category: "", desc: "提早前往熱門排隊名店現場抽取號碼牌，安排午餐時段順暢卡位。", notes: "", query: "五代目 花山うどん 銀座" },
+            { day: "Day 4", date: "30/06 (Tue)", time: "12:00", type: "Meal", title: "Luxury Lunch at Hanayama Udon", location: "銀座", category: "Cat 2", desc: "全網爆紅超寬日本群馬緞帶烏龍麵！口感極度Q彈。 [用餐時間約 1.5h]", notes: "⚠️ 溫馨提醒：Alvin請選用純醬汁口味或炸物熟食組合，主動避開海鮮高湯底。", query: "五代目 花山うどん 銀座" },
+            { day: "Day 4", date: "30/06 (Tue)", time: "13:30", type: "Activity", title: "Seeknit Bamboo Needles at Matsuya Ginza", location: "銀座", category: "", desc: "直接前往松屋銀座 (Matsuya Ginza) 7th Floor，尋找經典老字號高級 Seeknit 職人級竹編織針。", notes: "", query: "松屋銀座" },
+            { day: "Day 4", date: "30/06 (Tue)", time: "14:30", type: "Shopping", title: "Sanrio Corner & ancora Fountain Pen Workshop", location: "銀座", category: "Cat 4", desc: "- Sanrio NISHIGINZA: 夢幻粉紅週邊天堂\n- ancora: 體驗客製化專專屬蜜月鋼筆，打造唯一的紀念 [1.5h]\n*可順道加逛 中村藤吉 購買頂級茶點", notes: "", query: "ancora 銀座店" },
+            { day: "Day 4", date: "30/06 (Tue)", time: "15:00", type: "Shopping", title: "GU Marronier Gate Ginza", location: "銀座", category: "", desc: "大逛銀座大型旗艦店舖，入手當季限定流行服飾與高CP值極簡單品。", notes: "", query: "GU マロニエゲート銀座店" },
+            { day: "Day 4", date: "30/06 (Tue)", time: "16:00", type: "Transport", title: "Transit to Tokyo Station First Avenue", location: "東京站", category: "", desc: "從銀座輕鬆步行或搭乘地鐵山手線1站直達東京站 [車程/步程共 ~15m]", notes: "【動線大修正：取消豐洲溫泉 ➔ 改往東京車站一番街，動線更流遠！】", query: "東京駅" },
+            { day: "Day 4", date: "30/06 (Tue)", time: "16:30", type: "Shopping", title: "Tokyo Character Street Extravaganza", location: "東京站", category: "Cat 4", desc: "狂逛東京動漫角色街 (Character Street)，聚集吉卜力、寶可夢、蠟筆小新、Jump等所有官方旗艦店。加逛 3COINS 質感生活小物！", notes: "超級好買，伴手禮與個人收藏在此一次一網打盡！", query: "東京キャラクターストリート" },
+            { day: "Day 4", date: "19:30", type: "Booking", title: "Skyline View Sukiyaki Dinner at Moritaya", location: "丸之內", category: "Cat 3", desc: "モリタ屋 (Moritaya 東京丸之內店)。在高空絕美東京夜景下品嚐頂級 A5 黑毛和牛壽喜燒！", notes: "⚠️ 地點修正：位於東京站直達的「丸大樓 35 樓」！\n【重要：必須提早網上預約夜景窗邊席，全熟肉品無生海鮮，完美滿足！】", query: "モリタ屋 東京丸の内店" },
+            { day: "Day 4", date: "全天", type: "Overview", title: "Bic Camera Yurakucho Memo", location: "有樂町", category: "", desc: "所在地：〒100-0006 東京都千代田区有楽町1丁目11-1 ビックカメラ有楽町店 7Ｆ", notes: "可安排空檔前往採購3C與電器免稅品。", query: "ビックカメラ有樂町店" },
+            
+            // Day 5
+            { day: "Day 5", date: "01/07 (Wed)", time: "當日總覽", type: "Overview", title: "Shibuya & Harajuku Gaming & Craft Day", weather: "☀️ 01/07 (Wed) | 30°C | Sunny & Bright", location: "", category: "", desc: "原宿森林散策與澀谷 PARCO 電玩官方黑科技旗艦店狂熱日", notes: "", query: "渋谷PARCO" },
+            { day: "Day 5", date: "01/07 (Wed)", time: "早餐", type: "Meal", title: "Japan McDonald's Morning Treat", location: "原宿/表參道", category: "", desc: "品嚐限定 McGriddles (楓糖鬆餅滿福堡)！可前往原宿明治神宮表參道周邊在森林綠意中散步，呼吸清爽空氣。", notes: "", query: "マクドナルド 表参道" },
+            { day: "Day 5", date: "01/07 (Wed)", time: "10:00", type: "Activity", title: "Meiji Jingu Shrine & Takeshita Street Walk", location: "原宿", category: "", desc: "10:00 開始原宿竹下通部分潮流小店、飾品店陸續開門，邊逛街邊散步往澀谷方向移動。", notes: "", query: "明治神宮 大鳥居" },
+            { day: "Day 5", date: "01/07 (Wed)", time: "11:00", type: "Activity", title: "Modern Hojicha Tasting at RURU SHIBUYA", location: "澀谷", category: "Cat 1", desc: "全日式流水景觀現代焙茶概念店，設計極具視覺震撼，拍照打卡極美。[預留 1h]", notes: "【營業時間：11:00 - 19:00】", query: "RURU SHIBUYA" },
+            { day: "Day 5", date: "01/07 (Wed)", time: "12:00", type: "Shopping", title: "DARUMA STORE Craft Flagship Shop", location: "澀谷", category: "Cat 1", desc: "橫田株式會社官方毛線概念店，頂級設計師毛線與精緻手編高品質材料必買！[預留 1h]", notes: "【營業時間：12:00 - 19:00，週二公休】", query: "DARUMA STORE 渋谷" },
+            { day: "Day 5", date: "01/07 (Wed)", time: "13:30", type: "Meal", title: "Artisanal Udon Lunch at Menchirashi", location: "原宿", category: "Cat 4", desc: "潮流現造烏冬與熱騰騰招牌炸物 lunch [1h]，吃飽後沿著文青貓街 (Cat Street) 散步。", notes: "【營業時間：11:00 - 22:00】", query: "麺散" },
+            { day: "Day 5", date: "01/07 (Wed)", time: "14:30", type: "Activity", title: "Luxury Imported Yarn at WALNUT Tokyo", location: "表參道", category: "", desc: "歐美日系進口頂級毛線專門店，極具品味的手工編織愛好者特選基地。", notes: "【營業時間：11:00 - 18:00】", query: "WALNUT Tokyo" },
+            { day: "Day 5", date: "01/07 (Wed)", time: "15:20", type: "Shopping", title: "Shibuya PARCO 6F Anime Holy Land", location: "澀谷", category: "Cat 1", desc: "狂熱朝聖黃金陣容：\n- Nintendo Tokyo (官方旗艦店，狂買限定周邊 [2h])\n- CAPCOM STORE TOKYO\n- Pokemon Center Shibuya (超酷超夢培育槽生化風)", notes: "⚠️ 修正：神奇寶貝中心在澀谷PARCO 6樓，非秋葉原哦！", query: "Nintendo TOKYO" },
+            { day: "Day 5", date: "01/07 (Wed)", time: "18:30", type: "Activity", title: "Amino Spin District Exploration", location: "澀谷", category: "", desc: "Amino Spin 自由潮流周邊與街區漫步探索。", notes: "【營業時間：12:00 - 20:00']" , query: "澀谷" },
+            { day: "Day 5", date: "01/07 (Wed)", time: "19:30", type: "Meal", title: "Golden Omurice Dinner at EDW", location: "澀谷", category: "Cat 2", desc: "享用全東京最吸睛、滑嫩且極軟熟的黃金厚蛋包飯！賣相極佳，極度美味。", notes: "★ 特意排在 19:30 避開最擁擠的排隊人潮！\n【營業時間：11:00 - 22:00】", query: "Yellow Shibuya EDW" },
+            
+            // Day 6
+            { day: "Day 6", date: "02/07 (Thu)", time: "當日總覽", type: "Overview", title: "Shinjuku Premium Crafts & Head Spa Relaxation", weather: "☁️ 02/07 (Thu) | 25°C | Cloudy & Calm", location: "", category: "", desc: "手作材料採購大收穫與極致舒壓 Head Spa 蜜月奢華日", notes: "", query: "新宿okadaya" },
+            { day: "Day 6", date: "02/07 (Thu)", time: "早餐", type: "Meal", title: "Charming Bakery Breakfast at Cafe Aaliya", location: "新宿", category: "", desc: "在高級麵包咖啡廳享用晨間現烤香酥可頌與濃郁拿鐵。隨後步行 5-10 分鐘前往 Okadaya，動線完美流暢。", notes: "", query: "CAFE AALIYA" },
+            { day: "Day 6", date: "02/07 (Thu)", time: "10:30", type: "Transport", title: "Okadaya Shinjuku Main Store Crafting", location: "新宿", category: "Cat 1", desc: "手作編織、毛線、布料、手工藝材料的頂級多層樓旗艦天堂！大滿足採購 [預留 1.5h]", notes: "🚗 交通：從赤坂見附站搭乘地鐵 Ⓜ️M 線 (丸之內線) 直達新宿三丁目，一出站即達！\n【營業時間：10:30 - 20:30】", query: "新宿オカダヤ本店" },
+            { day: "Day 6", date: "02/07 (Thu)", time: "12:00", type: "Meal", title: "Arcade Games at GiGO Shinjuku Kabukicho", location: "新宿", category: "Cat 4", desc: "全新巨大娛樂遊藝巨塔！玩復古電玩機台與最新流行夾娃娃機，稍微消化肚子！", notes: "⚠️ 順路卡位插播：Okadaya 逛完至午餐前的絕佳緩衝點。\n【營業時間：10:00 - 01:00】", query: "GiGO 新宿歌舞伎町" },
+            { day: "Day 6", date: "02/07 (Thu)", time: "12:30", type: "Booking", title: "Indian Curry Lunch at Masala Dining", location: "新宿", category: "Cat 1", desc: "香氣濃郁的經典日式印度咖哩料理午餐，烤餅極大極香，環境舒適乾淨優雅。[用餐 1.5h]", notes: "★ 已成功預約好舒適座位！\n【營業時間：11:30 - 23:00】", query: "マサラダイニング 新宿" },
+            { day: "Day 6", date: "02/07 (Thu)", time: "14:30", type: "Shopping", title: "Yuzawaya Shinjuku Takashimaya Store", location: "新宿", category: "Cat 3", desc: "大逛位於高島屋百貨內的高人氣大型連鎖手工藝毛線布料專門店。", notes: "*(註：KIDDYLAND新宿目前無獨立大店，各類熱門卡通週邊已在東京車站一番街大買，此處專注手作)*\n【營業時間：10:00 - 20:00】", query: "ユ湯沢屋 新宿タкаシマヤ店" },
+            { day: "Day 6", date: "02/07 (Thu)", time: "16:30", type: "Transport", title: "Unload Loot at Akasaka Hotel", location: "赤坂", category: "", desc: "從新宿搭乘 Ⓜ️M 線快速返回赤坂酒店，放好前幾天累積的大量手作戰利品，輕裝出發護理。", notes: "", query: "Best Western Hotel Fino Tokyo Akasaka" },
+            { day: "Day 6", date: "02/07 (Thu)", time: "17:00", type: "Booking", title: "Luxury Hair & Head Spa at Meinou Re:treat", location: "赤坂", category: "Cat 2", desc: "Meinou Re:treat Akasaka ★【高級日式頭皮水療 Head Spa】\n在赤坂酒店旁邊享受完全私人、深度放鬆的極致頭皮護理與日式精油舒壓按摩。[極致療程 1.5h]", notes: "★ 已成功於 Hot Pepper 搶先預約！新婚旅行專屬放鬆行程。", query: "Meinou Re:treat 赤坂" },
+            { day: "Day 6", date: "02/07 (Thu)", time: "19:30", type: "Meal", title: "Stone-Grilled Gyukatsu Motomura", location: "赤坂", category: "", desc: "外皮金黃酥脆、內裡鮮嫩的石板現烤炸牛排！可自行調整熟度。距離Spa店步行僅3分鐘，極度順路。", notes: "⚠️ 註：此店不可常態預約，通常需要現場排隊，但全熟食且極度美味，非常值得！\n【營業時間：11:00 - 22:00】", query: "牛かつもと村 赤坂店" },
+            
+            // Day 7
+            { day: "Day 7", date: "03/07 (Fri)", time: "當日總覽", type: "Overview", title: "Harry Potter Stage Play & Historic Hojicha Sweet", weather: "☀️ 03/07 (Fri) | 31°C | Warm & Sunny", location: "", category: "", desc: "東京限定震撼舞台劇與極致松葉蟹新婚慶祝大餐", notes: "", query: "TBS赤坂ACTシアター" },
+            { day: "Day 7", date: "03/07 (Fri)", time: "早餐", type: "Meal", title: "Elegant Morning Tea at Ujien Akasaka", location: "赤坂", category: "", desc: "在赤坂Biz Tower內或周邊享用優雅的新婚在地特製早點與日式茶飲，隨後慢步至 TBS 劇場。", notes: "", query: "宇治園 赤坂" },
+            { day: "Day 7", date: "03/07 (Fri)", time: "11:15", type: "Activity", title: "TBS ACT Theater Check-in & Souvenirs", location: "赤坂", category: "", desc: "抵達 (赤坂) TBS ACT 劇場，現場核對電子門票，有序進場。開演前可瘋狂購買劇場限定獨家周邊與紀念品。", notes: "", query: "TBS赤坂ACTシアター" },
+            { day: "Day 7", date: "03/07 (Fri)", time: "11:45", type: "Booking", title: "Harry Potter and the Cursed Child Live", location: "赤坂", category: "Cat 1", desc: "東京限定大型震撼舞台劇演出！包含精彩上半場、中場休息與下半場，舞台機關與魔法特效極其震撼。[全場約 3.5h]", notes: "★ 已成功預約購票！一生必看一次的視覺盛宴。", query: "TBS赤坂ACTシアター" },
+            { day: "Day 7", date: "03/07 (Fri)", time: "15:20", type: "Transport", title: "Transit to Historic Ningyocho District", location: "人形町", category: "", desc: "舞台劇精彩結束 ➔ 搭乘地鐵前往擁有濃厚江戶風情的老字號人形町區域 [車程約 ~32m]", notes: "", query: "人形町駅" },
+            { day: "Day 7", date: "03/07 (Fri)", time: "16:30", type: "Activity", title: "Centennial Hojicha Soft Serve at Morinoen", location: "人形町", category: "Cat 2", desc: "擁有110年歷史的焙茶名店老字號！在下町老街浪漫漫步。", notes: "⚠️ 重要修正：2樓甘味處目前已關閉。調整為在1樓外帶區外帶極濃郁的名物「焙茶/抹茶霜淇淋」或焙茶銅鑼燒！\n【營業時間：10:00 - 19:00】", query: "森乃園 人形町" },
+            { day: "Day 7", date: "03/07 (Fri)", time: "19:30", type: "Booking", title: "Honeymoon Feast at Kani Jigoku Shinbashi", location: "新橋", category: "Cat 2", desc: "豪華螃蟹大餐！現場挑選新鮮巨大鱈場蟹、松葉蟹，由廚師現蒸現烤，完美實現螃蟹自由！", notes: "★ 預約席成功！⚠️ 貼心動線防線：全熟食精緻蟹肉大餐，完美避開刺身與蛤蜊生蠔！\n【營業時間：16:00 - 23:00】", query: "かに地獄 新橋" },
+            { day: "Day 7", date: "21:00", type: "Check-in", title: "Honeymoon Luggage Master Packing", location: "赤坂", category: "", desc: "返回赤坂酒店，開始甜蜜整理、妥善打包蜜月所有珍貴的手工藝毛線與動漫模型戰利品。", notes: "", query: "Best Western Hotel Fino Tokyo Akasaka" },
+            
+            // Day 8
+            { day: "Day 8", date: "04/07 (Sat)", time: "當日總覽", type: "Overview", title: "Ikebukuro Skyline Aquarium & Homeward Journey", weather: "☀️ 04/07 (Sat) | 29°C | Clear Skies", location: "", category: "", desc: "最後一站池袋太陽城夢幻空中企鵝與機場免稅大採購", notes: "", query: "サンシャイン水族館" },
+            { day: "Day 8", date: "04/07 (Sat)", time: "10:00", type: "Check-in", title: "Sunshine City Lockers & Skyline Aquarium", location: "池袋", category: "Cat 2", desc: "先至池袋太陽城 (Sunshine City) 寄存大件行李（館內有大量大型置物櫃）。隨後進入 Sunshine Aquarium 觀賞招牌「空中企鵝」漫步奇景。[預留 1.5h]", notes: "【水族館營業時間：09:30 - 18:00】", query: "サンシャイン水族館" },
+            { day: "Day 8", date: "04/07 (Sat)", time: "11:45", type: "Shopping", title: "Final Otaku Hunt at Pokemon Center Mega Tokyo", location: "池袋", category: "", desc: "大逛太陽城內全球最大的寶可夢中心 Mega Tokyo 與 Animate 池袋總店，買齊所有前幾天遺漏的動漫限定周邊！", notes: "", query: "ポケモンセンターメガトウキョー" },
+            { day: "Day 8", date: "04/07 (Sat)", time: "12:30", type: "Meal", title: "Pancake & Pasture Treat at BUTTER Tokyo Station", location: "池袋/東京站", category: "Cat 3", desc: "微調午餐：\n選擇一：Kanimamire (若仍想吃蟹可保留)\n選擇二：直接前往東京站享用 BUTTER - Biei Pasture Dairy Farm 的頂級美瑛乳製品鬆餅輕食！", notes: "⚠️ 動線微調：取消重複的螃蟹店，推薦前往東京站享用頂級鬆餅輕食，更方便搭車！", query: "BUTTER 美瑛放牧酪農場 東京駅" },
+            { day: "Day 8", date: "04/07 (Sat)", time: "13:30", type: "Transport", title: "Retrieve Baggage & JR N'EX Express to Airport", location: "東京站", category: "", desc: "回到寄存處提取全部行李，搭乘地鐵至東京站 🔄 轉乘 JR成田特快 (N'EX) 直達機場 [總車程穩定保證 ~65m]", notes: "", query: "東京駅 NEX" },
+            { day: "Day 8", date: "04/07 (Sat)", time: "14:30", type: "Activity", title: "Arrive at Narita International Airport", location: "NRT", category: "", desc: "順利安全抵達成田機場第二/三航廈，確認託運行李重量與航廈資訊。", notes: "", query: "成田空港" },
+            { day: "Day 8", date: "04/07 (Sat)", time: "15:00", type: "Shopping", title: "Duty Free Souvenir Ultimate Shopping Spree", location: "NRT", category: "", desc: "辦理登機與行李託運手續，隨後在機場免稅店進行最後血拼、大買日本精緻伴手禮（Royce, Tokyo Banana等熟食手信）。", notes: "【免稅店內亦可使用電子支付與現金】", query: "成田空港 免税店" },
+            { day: "Day 8", date: "04/07 (Sat)", time: "17:45", type: "Transport", title: "Homeward Flight Departure to Hong Kong ✈️", location: "香港", category: "", desc: "航班起飛返回香港，結束圓滿、收穫滿滿且絕無踩雷的東京幸福蜜月之旅！", notes: "期待下一次手作與卡牌的浪漫啟航！", query: "香港国際空港" }
+        ];
+
+        // Renderer Engine Function
+        function renderTimeline(data) {
+            const grid = document.getElementById('timeline-grid');
+            grid.innerHTML = ''; 
+
+            data.forEach(item => {
+                const card = document.createElement('div');
+                card.className = `card ${item.type === 'Overview' ? 'mode-overview' : ''}`;
+                
+                // Whimsical Soft Icons Setup Rules
+                let iconName = 'star';
+                if (item.type === 'Transport') iconName = 'sparkles';
+                if (item.type === 'Meal') iconName = 'coffee';
+                if (item.type === 'Booking') iconName = 'heart';
+                if (item.type === 'Shopping') iconName = 'gift';
+                if (item.type === 'Check-in') iconName = 'moon';
+                if (item.type === 'Overview') iconName = 'compass';
+
+                const locationHtml = item.location ? `<span class="location-badge"><i data-lucide="map-pin" style="width:12px;height:12px;color:var(--magic-magenta)"></i>${item.location}</span>` : '';
+                const categoryHtml = item.category ? `<span class="category-badge">${item.category}</span>` : '';
+                
+                let noteStyleClass = '';
+                if(item.notes.includes('⚠️')) noteStyleClass = 'note-warning';
+                else if(item.notes.includes('★')) noteStyleClass = 'note-star';
+                const notesHtml = item.notes ? `<div class="card-notes ${noteStyleClass}">${item.notes}</div>` : '';
+
+                const ribbonHtml = (item.notes.includes('★ 已') || item.notes.includes('★ Booked')) ? `<div class="booked-ribbon">✦ BOOKED</div>` : '';
+
+                if (item.type === 'Overview') {
+                    const weatherHtml = item.weather ? `<div class="weather-badge">✨ ${item.weather}</div>` : '';
+                    
+                    card.innerHTML = `
+                        <div class="card-time-block">
+                            <span class="type-tag tag-overview">${item.day}</span>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-header-line">
+                                ${weatherHtml}
+                                <h3 class="card-title">🌸 ${item.title} 🌸</h3>
+                            </div>
+                            <p class="card-desc">${item.desc}</p>
+                        </div>
+                    `;
+                } else {
+                    card.innerHTML = `
+                        ${ribbonHtml}
+                        <div class="card-time-block">
+                            <span class="time-badge">
+                                <i data-lucide="${iconName}" style="width: 18px; height: 18px; color: var(--magic-magenta);"></i>
+                                ${item.time}
+                            </span>
+                            <span class="type-tag tag-${item.type.toLowerCase()}">${item.type}</span>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-header-line">
+                                <h4 class="card-title">${item.title}</h4>
+                                ${locationHtml}
+                                ${categoryHtml}
+                            </div>
+                            <p class="card-desc">${item.desc}</p>
+                            ${notesHtml}
+                        </div>
+                        <div class="card-actions">
+                            <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.query)}" target="_blank" title="Find Magical Trail">
+                                <i data-lucide="map"></i>
+                            </a>
+                        </div>
+                    `;
+                }
+
+                grid.appendChild(card);
+            });
+
+            lucide.createIcons();
+        }
+
+        // Filtering Control Engine Implementation
+        function filterDay(targetDay) {
+            const buttons = document.querySelectorAll('.day-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            const event = window.event;
+            if(event) {
+                event.target.classList.add('active');
+            } else {
+                buttons.forEach(btn => {
+                    if(btn.getAttribute('onclick').includes(`'${targetDay}'`)) btn.classList.add('active');
+                });
+            }
+
+            if (targetDay === 'all') {
+                renderTimeline(itineraryData);
+            } else {
+                const filtered = itineraryData.filter(item => item.day === targetDay);
+                renderTimeline(filtered);
+            }
+        }
+
+        window.onload = function() {
+            renderTimeline(itineraryData);
+        };
+    </script>
+</body>
+</html>

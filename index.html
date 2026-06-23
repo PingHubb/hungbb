@@ -5,12 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Unicorn Magical Diary ✦ Tokyo Honeymoon Itinerary</title>
     
-    <!-- Google Fonts: Playful, Cute & Hand-drawn fonts for headings, body text, and Chinese characters -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Quicksand:wght@400;500;600;700&family=ZCOOL+KuaiLe&family=Kosugi+Maru&display=swap" rel="stylesheet">
     
-    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
@@ -44,8 +42,12 @@
         body {
             /* Applied 'ZCOOL KuaiLe' and 'Kosugi Maru' for a bubbly, rounded cute Chinese font style */
             font-family: 'Quicksand', 'ZCOOL KuaiLe', 'Kosugi Maru', sans-serif;
-            /* Magical Pastel Gradient Blend mimicking sky and rainbows */
-            background: linear-gradient(135deg, #FFF0F6 0%, #EBF7FF 40%, #F3EFFF 75%, #FFF9E6 100%);
+            
+            /* UPDATED BODY BACKGROUND: MATCHED TO THE SCRAPBOOK FRAME */
+            background-color: #fff4ef;
+            background-image: linear-gradient(90deg, rgba(245,198,198,0.15) 50%, transparent 50%), linear-gradient(rgba(245,198,198,0.15) 50%, transparent 50%);
+            background-size: 30px 30px;
+            
             background-attachment: fixed;
             color: var(--text-dark);
             line-height: 1.7;
@@ -94,10 +96,13 @@
             font-size: 5rem;
             font-weight: 700;
             letter-spacing: 2px;
-            background: linear-gradient(135deg, var(--magic-magenta), var(--glowing-purple), #FF9800);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0px 4px 6px rgba(255, 183, 213, 0.4));
+            
+            /* CHANGED TO SOLID COLOR */
+            color: #a67c7c;
+            -webkit-text-fill-color: initial;
+            background: none;
+            
+            filter: drop-shadow(0px 2px 4px rgba(166, 124, 124, 0.15));
             margin-bottom: 5px;
             display: inline-block;
         }
@@ -117,52 +122,87 @@
             padding: 0 20px;
         }
 
-        /* Bubbly Ribbon Navigation */
+        /* Scrapbook "Days" Navigation Bar Section Container */
+        .day-navigation-wrapper {
+            width: 100%;
+            padding: 24px 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background-color: #fff4ef;
+            background-image: linear-gradient(90deg, rgba(245,198,198,0.25) 50%, transparent 50%), linear-gradient(rgba(245,198,198,0.25) 50%, transparent 50%);
+            background-size: 26px 26px;
+            border-bottom: 2px solid rgba(166,124,124,0.3);
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
         .day-navigation {
+            position: relative;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
+            align-items: center;
             gap: 12px;
-            margin-bottom: 40px;
-            position: sticky;
-            top: 0;
-            background: rgba(255, 255, 255, 0.85);
-            padding: 15px 10px;
-            z-index: 100;
-            border-bottom: 3px dashed var(--unicorn-pink);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-radius: 0 0 30px 30px;
-            box-shadow: 0 8px 24px rgba(255, 183, 213, 0.15);
+            background: #fff4ef;
+            padding: 14px 32px;
+            border: 2px solid rgba(166, 124, 124, 0.65);
+            border-radius: 9999px;
+            box-shadow: 0 2px 5px rgba(166, 124, 124, 0.04);
+            font-family: 'Quicksand', 'Comfortaa', sans-serif;
         }
 
         .day-btn {
-            font-family: 'Quicksand', 'ZCOOL KuaiLe', sans-serif;
-            background: var(--white-sticker);
-            border: 2px solid var(--border-soft);
-            padding: 8px 18px;
-            border-radius: 20px;
+            background: transparent;
+            border: none;
+            padding: 4px 12px;
+            border-radius: 9999px;
             cursor: pointer;
-            font-weight: 700;
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.03);
+            font-weight: 500;
+            font-size: 0.875rem;
+            letter-spacing: 0.025em;
+            color: #a67c7c;
+            transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
+            box-shadow: none;
         }
 
         .day-btn:hover {
-            color: var(--magic-magenta);
-            border-color: var(--unicorn-pink);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(255, 111, 169, 0.2);
+            color: #a67c7c;
+            background: #f7e6df;
+            transform: none;
+            box-shadow: none;
         }
 
         .day-btn.active {
-            background: linear-gradient(135deg, var(--unicorn-pink) 0%, var(--lavender-purple) 100%);
-            color: white;
-            border-color: white;
-            box-shadow: 0 6px 15px rgba(214, 199, 255, 0.6);
-            transform: scale(1.05);
+            background: #f5c6c6;
+            color: #a67c7c;
+            font-weight: 700;
+            border: 1px solid rgba(166, 124, 124, 0.35);
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* Ribbon Bow Decorative Anchor Element */
+        .nav-ribbon-bow {
+            position: absolute;
+            bottom: -11px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #fff4ef;
+            padding: 0 6px;
+            color: #a67c7c;
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-ribbon-bow svg {
+            width: 20px;
+            height: 20px;
         }
 
         /* Timeline Grid */
@@ -170,6 +210,7 @@
             display: grid;
             grid-template-columns: 1fr;
             gap: 25px;
+            margin-top: 40px;
         }
 
         /* Bubbly Sticker Card Design */
@@ -394,9 +435,12 @@
             font-size: 2.2rem;
             font-family: 'Caveat', 'ZCOOL KuaiLe', cursive;
             letter-spacing: 1px;
-            background: linear-gradient(to right, var(--magic-magenta), var(--glowing-purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            
+            /* CHANGED TO SOLID COLOR FROM GRADIENT EFFECT */
+            color: #a67c7c;
+            -webkit-text-fill-color: initial;
+            background: none;
+            
             margin-top: 5px;
         }
 
@@ -428,9 +472,13 @@
                 border-top: 2px dashed var(--border-soft);
                 padding-top: 15px;
             }
+            .day-navigation-wrapper {
+                padding: 12px 5px;
+            }
             .day-navigation {
-                border-radius: 0;
-                padding: 10px 5px;
+                padding: 10px 16px;
+                border-radius: 24px;
+                gap: 8px;
             }
         }
     </style>
@@ -442,10 +490,9 @@
         <p>🦄 Tokyo Honeymoon ✦ Unicorn Itinerary 🦄</p>
     </header>
 
-    <div class="container">
-        <!-- Floating Pill Navigation Links -->
+    <div class="day-navigation-wrapper">
         <div class="day-navigation">
-            <button class="day-btn active" onclick="filterDay('all')">Show All Trails</button>
+            <button class="day-btn active" onclick="filterDay('all')">Show All</button>
             <button class="day-btn" onclick="filterDay('Day 1')">Day 1 (6/27)</button>
             <button class="day-btn" onclick="filterDay('Day 2')">Day 2 (6/28)</button>
             <button class="day-btn" onclick="filterDay('Day 3')">Day 3 (6/29)</button>
@@ -454,20 +501,27 @@
             <button class="day-btn" onclick="filterDay('Day 6')">Day 6 (7/02)</button>
             <button class="day-btn" onclick="filterDay('Day 7')">Day 7 (7/03)</button>
             <button class="day-btn" onclick="filterDay('Day 8')">Day 8 (7/04)</button>
-        </div>
 
-        <!-- Master Timeline Data Grid -->
-        <div class="timeline" id="timeline-grid">
-            <!-- Structural elements render dynamically here -->
+            <div class="nav-ribbon-bow">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12,9.5 C10.5,6.5 7,6.5 5.5,8 C4,9.5 5,12.5 7.5,12 C9.5,11.5 11,10.5 12,10.5 C13,10.5 14.5,11.5 16.5,12 C19,12.5 20,9.5 18.5,8 C17,6.5 13.5,6.5 12,9.5 Z M11.5,11 C11,12 9.5,15.5 8,17.5 M12.5,11 C13,12 14.5,15.5 16,17.5" 
+                          stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="12" cy="10.2" r="1.3" fill="currentColor"/>
+                </svg>
+            </div>
         </div>
     </div>
 
+    <div class="container">
+        <div class="timeline" id="timeline-grid">
+            </div>
+    </div>
+
     <script>
-        // Itinerary Dataset stays complete and matches user expectations perfectly
         const itineraryData = [
             // Day 1
             { day: "Day 1", date: "27/06 (Sat)", time: "當日總覽", type: "Overview", title: "Arrival in Tokyo & Akasaka Walk", weather: "☀️ 27/06 (Sat) | 28°C | Sunny", location: "", category: "", desc: "抵達東京 & 赤坂漫步", notes: "", query: "抵達東京 & 赤坂漫步 Tokyo" },
-            { day: "Day 1", date: "27/06 (Sat)", time: "15:20", type: "Transport", title: "Flight Landing at Narita Airport", location: "NRT", category: "", desc: "航班降落成田機場 (NRT)", notes: "", query: "成田機場" },
+            { day: "Day 1", date: "27/06 (Sat)", time: "15:20", type: "Transport", title: "Flight Landing at Narita Airport", location: "NRT", category: "", desc: "航班降落成成田機場 (NRT)", notes: "", query: "成田機場" },
             { day: "Day 1", date: "27/06 (Sat)", time: "16:00", type: "Transport", title: "Keisei Skyliner Express", location: "", category: "", desc: "交通過渡：搭乘 京成電鐵 Skyliner ➔ 日暮里站 🔄 轉乘地鐵抵達赤坂區域 [Total: ~65m]", notes: "", query: "日暮里駅" },
             { day: "Day 1", date: "27/06 (Sat)", time: "18:30", type: "Check-in", title: "Hotel Check-in at Best Western Akasaka", location: "赤坂", category: "", desc: "辦理入住 Best Western Hotel Fino Tokyo Akasaka", notes: "", query: "Best Western Hotel Fino Tokyo Akasaka" },
             { day: "Day 1", date: "27/06 (Sat)", time: "19:30", type: "Meal", title: "Local Dinner in Akasaka", location: "赤坂", category: "", desc: "可選擇在地高質感餐廳：\n1. 麵處 友 (極濃雞白湯拉麵)\n2. とんかつ 水野 (老字號炸豬排)", notes: "⚠️ 提醒：Alvin不吃生海鮮/刺身，選熟食炸物、拉麵安全又美味！", query: "麵處 友 赤坂" },
@@ -487,7 +541,7 @@
             { day: "Day 3", date: "29/06 (Mon)", time: "早餐", type: "Meal", title: "Asakusa Walk & Dengama Tableware", location: "西淺草", category: "Cat 4", desc: "淺草早晨散策！先在雷門及仲見世通漫步，10:00準時到田窯選購傳統精緻日式陶瓷器皿與和風餐具。", notes: "*(早餐可於雷門附近小吃或咖啡廳簡單解決)*\n【營業時間：10:00 - 19:00】", query: "和の器 田窯 西浅草" },
             { day: "Day 3", date: "29/06 (Mon)", time: "10:00", type: "Activity", title: "Teatime at Hatoya Asakusa", location: "淺草", category: "Cat 1", desc: "極致現刷焙茶/抹茶專門店！可在吧台前欣賞茶師現刷優雅焙茶。", notes: "⚠️ 動線修正：已移至11:00開門時間，完全避開吃閉門羹風險。\n【營業時間：11:00 - 18:00】", query: "Hatoya Asakusa 浅草" },
             { day: "Day 3", date: "29/06 (Mon)", time: "11:00", type: "Activity", title: "Textile Exploration at Orinami Asakusa", location: "淺草", category: "Cat 3", desc: "傳統日式紡織與手作工藝體驗，尋找特色布料與精緻和風編織配件。[預留 45m]", notes: "【營業時間：10:00 - 18:00】", query: "Orinami 浅草店" },
-            { day: "Day 3", date: "29/06 (Mon)", time: "12:30", type: "Meal", title: "Artisan Ramen at Mototen Kuroki", location: "淺慢橋", category: "Cat 3", desc: "日本頂級匠人高評價拉麵，湯頭極致細膩。[用餐時間約 1h]", notes: "⚠️ 備註：當天 8:00 開始發放當日整理券，只收現金。Alvin請選用純鴨/鹽味拉麵，避開貝類食材！\n【營業時間：11:00 - 15:00 (週日公休)】", query: "饗 くろ喜" },
+            { day: "Day 3", date: "29/06 (Mon)", time: "12:30", type: "Meal", title: "Artisan Ramen at Mototen Kuroki", location: "淺慢橋", category: "Cat 3", desc: "日本頂級匠人高評價拉麵，湯頭極致細膩。[用餐時間約 1h]", notes: "⚠️ 備註：當天 8:00 開始發放當日整理券，只收現金. Alvin請選用純鴨/鹽味拉麵，避開貝類食材！\n【營業時間：11:00 - 15:00 (週日公休)】", query: "饗 くろ喜" },
             { day: "Day 3", date: "29/06 (Mon)", time: "13:30", type: "Activity", title: "Yarn Hunting at ITORICOT Asakusabashi", location: "淺草橋", category: "Cat 1", desc: "工廠剩餘優質工業線、絕版毛線深度尋寶，手作愛好者必訪天堂。[預留 1h]", notes: "⚠️ 修正：因同區的 Keito 實體店已永久歇業，可將時間留給 ITORICOT 深度體驗！\n【營業時間：11:00 - 18:00，不定休】", query: "ITORICOT 浅草橋" },
             { day: "Day 3", date: "29/06 (Mon)", time: "15:20", type: "Activity", title: "Akihabara Otaku Culture Pilgrimage", location: "秋葉原", category: "Cat 4", desc: "依個人步調自由逛街朝盛：\n- Radio Kaikan 廣播會館 (2-7F amiami, Habikoro)\n- TAMASHII NATIONS STORE (頂級成品模型)\n- Super Potato (懷舊老遊戲街機)\n- Mandarake CoCoo (絕版老玩具)\n- 駿河屋 Surugaya / animate 旗艦店", notes: "各大店鋪營業時間多為 10:00/11:00 - 20:00。放鬆步調狂熱血拼！", query: "秋葉原ラジオ会館" },
             { day: "Day 3", date: "29/06 (Mon)", time: "19:30", type: "Booking", title: "Monster Hunter Bar Gathering", location: "秋葉原", category: "Cat 2", desc: "官方授權獵人集會所！沉浸式遊戲場景還原，必點特色貓飯與夢幻獵人調酒調飲。", notes: "★ 已成功預約！點餐請特別注意：請主動避開生刺身、蛤蜊與生蠔，確保全熟食安全！", query: "Monster Hunter Bar 秋葉原" },
@@ -501,7 +555,7 @@
             { day: "Day 4", date: "30/06 (Tue)", time: "12:00", type: "Meal", title: "Luxury Lunch at Hanayama Udon", location: "銀座", category: "Cat 2", desc: "全網爆紅超寬日本群馬緞帶烏龍麵！口感極度Q彈。 [用餐時間約 1.5h]", notes: "⚠️ 溫馨提醒：Alvin請選用純醬汁口味或炸物熟食組合，主動避開海鮮高湯底。", query: "五代目 花山うどん 銀座" },
             { day: "Day 4", date: "30/06 (Tue)", time: "13:30", type: "Activity", title: "Seeknit Bamboo Needles at Matsuya Ginza", location: "銀座", category: "", desc: "直接前往松屋銀座 (Matsuya Ginza) 7th Floor，尋找經典老字號高級 Seeknit 職人級竹編織針。", notes: "", query: "松屋銀座" },
             { day: "Day 4", date: "30/06 (Tue)", time: "14:30", type: "Shopping", title: "Sanrio Corner & ancora Fountain Pen Workshop", location: "銀座", category: "Cat 4", desc: "- Sanrio NISHIGINZA: 夢幻粉紅週邊天堂\n- ancora: 體驗客製化專專屬蜜月鋼筆，打造唯一的紀念 [1.5h]\n*可順道加逛 中村藤吉 購買頂級茶點", notes: "", query: "ancora 銀座店" },
-            { day: "Day 4", date: "30/06 (Tue)", time: "15:00", type: "Shopping", title: "GU Marronier Gate Ginza", location: "銀座", category: "", desc: "大逛銀座大型旗艦店舖，入手當季限定流行服飾與高CP值極簡單品。", notes: "", query: "GU マロニエゲート銀座店" },
+            { day: "Day 4", date: "30/06 (Tue)", time: "15:00", type: "Shopping", title: "GU Marronier Gate Ginza", location: "銀座", category: "", desc: "大逛銀座大型旗艦店舖，入手當季限定流行服飾與高CP值極簡單品。", notes: "維護時間為 【11:00 - 21:00】", query: "GU マロニエゲート銀座店" },
             { day: "Day 4", date: "30/06 (Tue)", time: "16:00", type: "Transport", title: "Transit to Tokyo Station First Avenue", location: "東京站", category: "", desc: "從銀座輕鬆步行或搭乘地鐵山手線1站直達東京站 [車程/步程共 ~15m]", notes: "【動線大修正：取消豐洲溫泉 ➔ 改往東京車站一番街，動線更流遠！】", query: "東京駅" },
             { day: "Day 4", date: "30/06 (Tue)", time: "16:30", type: "Shopping", title: "Tokyo Character Street Extravaganza", location: "東京站", category: "Cat 4", desc: "狂逛東京動漫角色街 (Character Street)，聚集吉卜力、寶可夢、蠟筆小新、Jump等所有官方旗艦店。加逛 3COINS 質感生活小物！", notes: "超級好買，伴手禮與個人收藏在此一次一網打盡！", query: "東京キャラクターストリート" },
             { day: "Day 4", date: "19:30", type: "Booking", title: "Skyline View Sukiyaki Dinner at Moritaya", location: "丸之內", category: "Cat 3", desc: "モリタ屋 (Moritaya 東京丸之內店)。在高空絕美東京夜景下品嚐頂級 A5 黑毛和牛壽喜燒！", notes: "⚠️ 地點修正：位於東京站直達的「丸大樓 35 樓」！\n【重要：必須提早網上預約夜景窗邊席，全熟肉品無生海鮮，完美滿足！】", query: "モリタ屋 東京丸の内店" },
@@ -516,7 +570,7 @@
             { day: "Day 5", date: "01/07 (Wed)", time: "13:30", type: "Meal", title: "Artisanal Udon Lunch at Menchirashi", location: "原宿", category: "Cat 4", desc: "潮流現造烏冬與熱騰騰招牌炸物 lunch [1h]，吃飽後沿著文青貓街 (Cat Street) 散步。", notes: "【營業時間：11:00 - 22:00】", query: "麺散" },
             { day: "Day 5", date: "01/07 (Wed)", time: "14:30", type: "Activity", title: "Luxury Imported Yarn at WALNUT Tokyo", location: "表參道", category: "", desc: "歐美日系進口頂級毛線專門店，極具品味的手工編織愛好者特選基地。", notes: "【營業時間：11:00 - 18:00】", query: "WALNUT Tokyo" },
             { day: "Day 5", date: "01/07 (Wed)", time: "15:20", type: "Shopping", title: "Shibuya PARCO 6F Anime Holy Land", location: "澀谷", category: "Cat 1", desc: "狂熱朝聖黃金陣容：\n- Nintendo Tokyo (官方旗艦店，狂買限定周邊 [2h])\n- CAPCOM STORE TOKYO\n- Pokemon Center Shibuya (超酷超夢培育槽生化風)", notes: "⚠️ 修正：神奇寶貝中心在澀谷PARCO 6樓，非秋葉原哦！", query: "Nintendo TOKYO" },
-            { day: "Day 5", date: "01/07 (Wed)", time: "18:30", type: "Activity", title: "Amino Spin District Exploration", location: "澀谷", category: "", desc: "Amino Spin 自由潮流周邊與街區漫步探索。", notes: "【營業時間：12:00 - 20:00']" , query: "澀谷" },
+            { day: "Day 5", date: "01/07 (Wed)", time: "18:30", type: "Activity", title: "Amino Spin District Exploration", location: "澀谷", category: "", desc: "Amino Spin 自由潮流周邊與街區漫步探索。", notes: "【營業時間：12:00 - 20:00】", query: "澀谷" },
             { day: "Day 5", date: "01/07 (Wed)", time: "19:30", type: "Meal", title: "Golden Omurice Dinner at EDW", location: "澀谷", category: "Cat 2", desc: "享用全東京最吸睛、滑嫩且極軟熟的黃金厚蛋包飯！賣相極佳，極度美味。", notes: "★ 特意排在 19:30 避開最擁擠的排隊人潮！\n【營業時間：11:00 - 22:00】", query: "Yellow Shibuya EDW" },
             
             // Day 6
@@ -525,7 +579,7 @@
             { day: "Day 6", date: "02/07 (Thu)", time: "10:30", type: "Transport", title: "Okadaya Shinjuku Main Store Crafting", location: "新宿", category: "Cat 1", desc: "手作編織、毛線、布料、手工藝材料的頂級多層樓旗艦天堂！大滿足採購 [預留 1.5h]", notes: "🚗 交通：從赤坂見附站搭乘地鐵 Ⓜ️M 線 (丸之內線) 直達新宿三丁目，一出站即達！\n【營業時間：10:30 - 20:30】", query: "新宿オカダヤ本店" },
             { day: "Day 6", date: "02/07 (Thu)", time: "12:00", type: "Meal", title: "Arcade Games at GiGO Shinjuku Kabukicho", location: "新宿", category: "Cat 4", desc: "全新巨大娛樂遊藝巨塔！玩復古電玩機台與最新流行夾娃娃機，稍微消化肚子！", notes: "⚠️ 順路卡位插播：Okadaya 逛完至午餐前的絕佳緩衝點。\n【營業時間：10:00 - 01:00】", query: "GiGO 新宿歌舞伎町" },
             { day: "Day 6", date: "02/07 (Thu)", time: "12:30", type: "Booking", title: "Indian Curry Lunch at Masala Dining", location: "新宿", category: "Cat 1", desc: "香氣濃郁的經典日式印度咖哩料理午餐，烤餅極大極香，環境舒適乾淨優雅。[用餐 1.5h]", notes: "★ 已成功預約好舒適座位！\n【營業時間：11:30 - 23:00】", query: "マサラダイニング 新宿" },
-            { day: "Day 6", date: "02/07 (Thu)", time: "14:30", type: "Shopping", title: "Yuzawaya Shinjuku Takashimaya Store", location: "新宿", category: "Cat 3", desc: "大逛位於高島屋百貨內的高人氣大型連鎖手工藝毛線布料專門店。", notes: "*(註：KIDDYLAND新宿目前無獨立大店，各類熱門卡通週邊已在東京車站一番街大買，此處專注手作)*\n【營業時間：10:00 - 20:00】", query: "ユ湯沢屋 新宿タкаシマヤ店" },
+            { day: "Day 6", date: "02/07 (Thu)", time: "14:30", type: "Shopping", title: "Yuzawaya Shinjuku Takashimaya Store", location: "新宿", category: "Cat 3", desc: "大逛位於高島屋百貨內的高人氣大型連鎖手工藝毛線布料專門店。", notes: "*(註：KIDDYLAND新宿目前無獨立大店，各類熱門卡通週邊已在東京車站一番街大買，此處專注手作)*\n【營業時間：10:00 - 20:00】", query: "ユ湯沢屋 新宿タカシマヤ店" },
             { day: "Day 6", date: "02/07 (Thu)", time: "16:30", type: "Transport", title: "Unload Loot at Akasaka Hotel", location: "赤坂", category: "", desc: "從新宿搭乘 Ⓜ️M 線快速返回赤坂酒店，放好前幾天累積的大量手作戰利品，輕裝出發護理。", notes: "", query: "Best Western Hotel Fino Tokyo Akasaka" },
             { day: "Day 6", date: "02/07 (Thu)", time: "17:00", type: "Booking", title: "Luxury Hair & Head Spa at Meinou Re:treat", location: "赤坂", category: "Cat 2", desc: "Meinou Re:treat Akasaka ★【高級日式頭皮水療 Head Spa】\n在赤坂酒店旁邊享受完全私人、深度放鬆的極致頭皮護理與日式精油舒壓按摩。[極致療程 1.5h]", notes: "★ 已成功於 Hot Pepper 搶先預約！新婚旅行專屬放鬆行程。", query: "Meinou Re:treat 赤坂" },
             { day: "Day 6", date: "02/07 (Thu)", time: "19:30", type: "Meal", title: "Stone-Grilled Gyukatsu Motomura", location: "赤坂", category: "", desc: "外皮金黃酥脆、內裡鮮嫩的石板現烤炸牛排！可自行調整熟度。距離Spa店步行僅3分鐘，極度順路。", notes: "⚠️ 註：此店不可常態預約，通常需要現場排隊，但全熟食且極度美味，非常值得！\n【營業時間：11:00 - 22:00】", query: "牛かつもと村 赤坂店" },
@@ -538,7 +592,7 @@
             { day: "Day 7", date: "03/07 (Fri)", time: "15:20", type: "Transport", title: "Transit to Historic Ningyocho District", location: "人形町", category: "", desc: "舞台劇精彩結束 ➔ 搭乘地鐵前往擁有濃厚江戶風情的老字號人形町區域 [車程約 ~32m]", notes: "", query: "人形町駅" },
             { day: "Day 7", date: "03/07 (Fri)", time: "16:30", type: "Activity", title: "Centennial Hojicha Soft Serve at Morinoen", location: "人形町", category: "Cat 2", desc: "擁有110年歷史的焙茶名店老字號！在下町老街浪漫漫步。", notes: "⚠️ 重要修正：2樓甘味處目前已關閉。調整為在1樓外帶區外帶極濃郁的名物「焙茶/抹茶霜淇淋」或焙茶銅鑼燒！\n【營業時間：10:00 - 19:00】", query: "森乃園 人形町" },
             { day: "Day 7", date: "03/07 (Fri)", time: "19:30", type: "Booking", title: "Honeymoon Feast at Kani Jigoku Shinbashi", location: "新橋", category: "Cat 2", desc: "豪華螃蟹大餐！現場挑選新鮮巨大鱈場蟹、松葉蟹，由廚師現蒸現烤，完美實現螃蟹自由！", notes: "★ 預約席成功！⚠️ 貼心動線防線：全熟食精緻蟹肉大餐，完美避開刺身與蛤蜊生蠔！\n【營業時間：16:00 - 23:00】", query: "かに地獄 新橋" },
-            { day: "Day 7", date: "21:00", type: "Check-in", title: "Honeymoon Luggage Master Packing", location: "赤坂", category: "", desc: "返回赤坂酒店，開始甜蜜整理、妥善打包蜜月所有珍貴的手工藝毛線與動漫模型戰利品。", notes: "", query: "Best Western Hotel Fino Tokyo Akasaka" },
+            { day: "Day 7", date: "21:00", type: "Check-in", title: "Honeymoon Luggage Master Packing", location: "赤坂", category: "", desc: "返回赤坂酒店，開始甜蜜整理、妥善打包蜜月所有珍貴的所有珍貴的手工藝毛線與動漫模型戰利品。", notes: "", query: "Best Western Hotel Fino Tokyo Akasaka" },
             
             // Day 8
             { day: "Day 8", date: "04/07 (Sat)", time: "當日總覽", type: "Overview", title: "Ikebukuro Skyline Aquarium & Homeward Journey", weather: "☀️ 04/07 (Sat) | 29°C | Clear Skies", location: "", category: "", desc: "最後一站池袋太陽城夢幻空中企鵝與機場免稅大採購", notes: "", query: "サンシャイン水族館" },
@@ -551,7 +605,6 @@
             { day: "Day 8", date: "04/07 (Sat)", time: "17:45", type: "Transport", title: "Homeward Flight Departure to Hong Kong ✈️", location: "香港", category: "", desc: "航班起飛返回香港，結束圓滿、收穫滿滿且絕無踩雷的東京幸福蜜月之旅！", notes: "期待下一次手作與卡牌的浪漫啟航！", query: "香港国際空港" }
         ];
 
-        // Renderer Engine Function
         function renderTimeline(data) {
             const grid = document.getElementById('timeline-grid');
             grid.innerHTML = ''; 
@@ -560,7 +613,6 @@
                 const card = document.createElement('div');
                 card.className = `card ${item.type === 'Overview' ? 'mode-overview' : ''}`;
                 
-                // Whimsical Soft Icons Setup Rules
                 let iconName = 'star';
                 if (item.type === 'Transport') iconName = 'sparkles';
                 if (item.type === 'Meal') iconName = 'coffee';
@@ -627,7 +679,6 @@
             lucide.createIcons();
         }
 
-        // Filtering Control Engine Implementation
         function filterDay(targetDay) {
             const buttons = document.querySelectorAll('.day-btn');
             buttons.forEach(btn => btn.classList.remove('active'));

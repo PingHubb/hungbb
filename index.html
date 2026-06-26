@@ -3,41 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>👦🏻 ❤️ 🐻 Osaka Trip | 前3天終極指南</title>
+    <title>👦🏻 ❤️ 🐻 Osaka Trip | 終極指南</title>
     <style>
         :root {
             --primary-pink: #ffb7b2;
             --accent-orange: #ffdac1;
-            --text-dark: #4a4a4a;
-            --text-muted: #8e8e8e;
-            --time-blue: #70a1ff;
-            --tag-no-beef: #ff6b6b;
-            --tag-budget: #2ed573;
-            --tag-express: #a55eea;
+            --text-dark: #3a3a3a; /* Darkened slightly for readability */
+            --text-muted: #6e6e6e;
+            --time-blue: #4f83cc; /* Darkened slightly for readability */
+            --tag-no-beef: #ee5253;
+            --tag-budget: #26af61;
+            --tag-express: #8e44ad;
         }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             line-height: 1.6;
             color: var(--text-dark);
-            /* 浪漫微甜櫻花漸變背景 */
-            background: linear-gradient(135deg, #fff5f5 0%, #ffe3e3 50%, #fff0e6 100%);
-            background-attachment: fixed;
             margin: 0;
             padding: 15px;
+            
+            /* --- THE NEW SEMI-TRANSPARENT, BLENDED BACKGROUND --- */
+            /* 1. Add your custom diorama image */
+            background-image: url('osaka_diorama_bg.jpg'); /* YOU MUST CHANGE THIS URL */
+            /* 2. Blend it with a semi-transparent textured overlay for a natural paper look */
+            background-color: rgba(255, 250, 240, 0.5); /* A warm, creamy paper tone */
+            background-blend-mode: overlay; /* This blends the image with the overlay color */
+            background-attachment: fixed; /* Keep it fixed during scroll */
+            background-size: cover; /* Make it cover the whole screen */
+            background-position: center; /* Center the diorama image */
+            /* --------------------------------------------------- */
         }
 
         .container {
             max-width: 650px;
             margin: 20px auto;
-            background: rgba(255, 255, 255, 0.85);
-            /* 毛玻璃質感，輕盈乾淨 */
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            /* Make the container a clean glass box that integrates with the background */
+            background: rgba(255, 255, 255, 0.7); /* High transparency for blending */
+            backdrop-filter: blur(8px); /* Blend the text-heavy cards into the image */
+            -webkit-backdrop-filter: blur(8px);
             padding: 30px 20px;
             border-radius: 24px;
-            box-shadow: 0 10px 30px rgba(255, 183, 178, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 10px 30px rgba(255, 183, 178, 0.15); /* Warmer shadow */
+            border: 1px solid rgba(255, 255, 255, 0.4);
         }
 
         .header-area {
@@ -47,11 +55,12 @@
         }
 
         h1 {
-            color: #ff7675;
+            color: #ee5253;
             font-size: 26px;
             margin: 0 0 8px 0;
             font-weight: 800;
             letter-spacing: 1px;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
         }
 
         .subtitle {
@@ -63,17 +72,17 @@
 
         .heart-divider {
             font-size: 14px;
-            color: #ff7675;
+            color: #ee5253;
             margin: 10px 0;
         }
 
         .day-card {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.75); /* High transparency within glass boxes */
             border-radius: 16px;
             padding: 20px;
             margin-bottom: 25px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
-            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.01);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             transition: transform 0.2s;
         }
 
@@ -84,10 +93,10 @@
         .day-header {
             font-size: 16px;
             font-weight: 700;
-            color: #e17055;
+            color: #c0392b;
             margin-bottom: 15px;
             padding-bottom: 8px;
-            border-bottom: 2px dashed rgba(255, 118, 117, 0.2);
+            border-bottom: 2px dashed rgba(231, 76, 60, 0.2);
             display: flex;
             align-items: center;
         }
@@ -112,10 +121,10 @@
 
         .time {
             font-weight: 700;
-            color: var(--time-blue);
+            color: white; /* Contrast with blue box */
+            background: rgba(112, 161, 255, 0.9); /* Opaque blue box */
             min-width: 85px;
             flex-shrink: 0;
-            background: rgba(112, 161, 255, 0.1);
             padding: 2px 6px;
             border-radius: 6px;
             text-align: center;
@@ -128,7 +137,6 @@
             flex-grow: 1;
         }
 
-        /* 標籤設計 */
         .badge {
             background-color: var(--tag-no-beef);
             color: white;
@@ -171,12 +179,11 @@
             align-items: center;
         }
 
-        /* 表格精細優化 */
         .table-wrapper {
             overflow-x: auto;
             border-radius: 14px;
             border: 1px solid rgba(0,0,0,0.05);
-            background: white;
+            background: rgba(255, 255, 255, 0.8);
             box-shadow: 0 4px 15px rgba(0,0,0,0.01);
         }
 
@@ -193,9 +200,9 @@
 
         th {
             background-color: #fff0f0;
-            color: #ff7675;
+            color: #ee5253;
             font-weight: 600;
-            border-bottom: 2px solid rgba(255, 118, 117, 0.1);
+            border-bottom: 2px solid rgba(231, 76, 60, 0.1);
         }
 
         td {
@@ -205,12 +212,13 @@
         .total-row {
             font-weight: 700;
             background-color: #fff9f9;
-            color: #d63031;
+            color: #c0392b;
         }
 
-        /* 底部 tips 樣式 */
         .tips-box {
             background: rgba(255, 234, 167, 0.25);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
             border: 1px dashed #ffeaa7;
             border-radius: 14px;
             padding: 15px 20px;
@@ -242,7 +250,7 @@
 <div class="container">
     <div class="header-area">
         <h1>👦🏻 ❤️ 🐻 大阪甜蜜之旅</h1>
-        <div class="subtitle">前 3 天精確時間軸・無牛美食・醒目預算指南</div>
+        <div class="subtitle">前 3 天精確時間軸・無牛美食・預算指南</div>
         <div class="heart-divider">🌸 ┈┈┈┈ 🧸 ┈┈┈┈ 🌸</div>
     </div>
 
@@ -331,23 +339,23 @@
                 <tr class="total-row">
                     <td>基本交通總計</td>
                     <td>約 ¥10,320 日圓</td>
-                    <td>折合約 $500 港幣 (AA公數無壓力)</td>
+                    <td>折合約 $500 港幣</td>
                 </tr>
             </tbody>
         </table>
     </div>
 
     <div class="tips-box">
-        <div style="font-weight: 700; color: #d63031;">💡 醒目男友平玩小攻略</div>
+        <div style="font-weight: 700; color: #c0392b;">💡 醒目男友平玩小攻略</div>
         <ul>
-            <li><b>落機即開公數袋：</b> 兩人各出 ¥15,000 日圓，正餐、車資、門票直接用公數付，輕鬆省心。</li>
-            <li><b>Cafe 甜蜜分食：</b> Cafe 或 HARBS 兩人 share 一份甜品，省錢又能試更多口味，還更甜蜜！</li>
-            <li><b>高光時刻轉移：</b> 大開銷用公數，但陪 🐻 扭蛋（¥400）或去販賣機投熱茶（¥160）時你主動掏錢，花小錢買大貼心！</li>
+            <li><b>公數基金：</b> 落機每人拿 ¥15,000 日圓現金放同一個袋，正餐車資直接付，公數無壓力。</li>
+            <li><b>甜蜜分食：</b> Cafe 兩人 share 一份甜品，省錢又能試更多口味，還更甜蜜！</li>
+            <li><b>高光小確幸：</b> 大開銷用公數，但陪 🐻 在 PARCO 扭蛋（¥400）或去販賣機投熱茶（¥160）時你掏錢，小錢買大貼心！</li>
         </ul>
     </div>
 
     <div class="footer">
-        祝 👦🏻 與 🐻 大阪慶功之旅甜蜜順利！放低壓力，好好享受屬於你哋嘅當下！✨
+        祝 👦🏻 與 🐻 大阪之旅甜蜜順利！忘記期權股票，抱緊身邊人享受當下！✨
     </div>
 </div>
 
